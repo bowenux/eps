@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Test</title>
+  <meta name="description" content="test">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<style>
+.tiles{
+  padding: 0;
+}
+.tiles > li{
+  list-style: none;
+  display: inline-block;
+  float:left;
+  width: 100%;
+  margin-bottom:6px;
+}
+.tiles > li > a{
+  background:#eaeaea;
+  color: #1a1a1a;
+  display: block;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100%;
+  margin:0 3px;
+  position: relative;
+  z-index:1;
+  overflow: hidden;
+}
+.tiles > li > a.text-white{
+  color: #fff;
+  text-shadow: 0 1px 11px rgba(0,0,0,.3);
+}
+.tiles > li > a:hover,
+.tiles > li > a:active{
+  text-decoration: none;
+}
+.tiles > li > a:hover .cover,
+.tiles > li > a:hover .graphic{
+  -ms-transform: scale(1.05,1.05); /* IE 9 */
+  -webkit-transform: scale(1.05,1.05); /* Chrome, Safari, Opera */
+  transform: scale(1.05,1.05);
+}
+.tiles .heading{
+  font-size: 1.3em;
+  font-weight: 900;
+  line-height: 1.4;
+  display: block;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 10;
+}
+.tiles .caption{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 9;
+}
+.tiles .graphic {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 5;
+  opacity: .5;
+  max-height: 100px;
+  -webkit-transition: transform 0.2s ease;
+  transition: transform 0.2s ease;
+}
+.tiles .cover{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+  min-height: 100%;
+  min-width: 100%;
+  margin: auto;
+  z-index: 1;
+  -webkit-transition: transform 0.2s ease;
+  transition: transform 0.2s ease;
+}
+
+
+
+@media screen and (min-width: 768px){
+  .tiles > li{
+    width: 25%;
+    height: 265px;
+  }
+
+  .tiles > li:nth-child(11n+1){
+    width: 50%;
+    height: 535px;
+  }
+  .tiles > li:nth-child(11n+2),
+  .tiles > li:nth-child(11n+6){
+    width: 50%;
+  }
+
+  .tiles > li:nth-child(11n+1) .heading,
+  .tiles > li:nth-child(11n+2) .heading,
+  .tiles > li:nth-child(11n+6) .heading{
+    padding: 25px;
+  }
+  .tiles > li:nth-child(11n+1) .heading{
+    font-size: 1.9em;
+  }
+  .tiles > li:nth-child(11n+2) .heading,
+  .tiles > li:nth-child(11n+6) .heading{
+    font-size: 1.5em;
+  }
+
+  .tiles .graphic {
+    opacity: 1;
+  }
+}
+
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-10">
+      <h1>Webinars</h1>
+      <h2 class="lead">Join us for a webinar to learn more about how EPS solutions can help your students make measurable progress and close the achievement gap</h2>
+    </div>
+  </div>
+
+  <ul class="tiles">
+    <li>
+      <a href="#" class="text-white">
+        <span class="heading">Help Nonreaders and Struggling Readers Make Significant and Sustainable Gains</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Julie Ross, S.P.I.R.E. National Trainer</span>
+        <img src="http://i.istockimg.com/file_thumbview_approve/10623986/6/stock-photo-10623986-primary-school-learning-difficulties.jpg" class="cover">
+      </a>
+    </li>
+    <li>
+      <a href="#" class="text-white">
+        <span class="heading">The Importance of Vocabulary Instruction and Wordly Wise 3000®</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Becky Cole, M.Ed.</span>
+        <img src="http://i.istockimg.com/file_thumbview_approve/88489159/6/stock-photo-88489159-flying-letters-from-the-opened-book-on-wooden-table.jpg" class="cover">
+      </a>
+    </li>
+    
+    <li>
+      <a href="#" style="background-color:#bcce43;">
+        <span class="heading">Explode The Code Online: Building Essential Literacy Skills</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Deanna Terzian, President of TutorWorks</span>
+        <img src="http://placehold.it/300x250" class="graphic">
+      </a>
+    </li>
+    <li>
+      <a href="#" style="background-color:#f9e7d1;">
+        <span class="heading">The Science of Reading and EPS Programs</span>
+        <span class="caption hidden-xs hidden-sm">Presented by JoAnn Lense, Educational Consultant</span>
+        <img src="http://placehold.it/250x300" class="graphic">
+      </a>
+    </li>
+    <li>
+      <a href="#" style="background-color:#bad3e4;">
+        <span class="heading">Building Your MTSS Infrastructure for Research-Based Instruction</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Dr. Tom Jenkins, Ed.D., Educational Consultation Service</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" style="background-color:#afe181;">
+        <span class="heading">Targeted and Individualized Reading Intervention for Struggling Students</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Mildred Papi, Academy of READING National Trainer</span>
+        <img src="http://placehold.it/300x250" class="graphic">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="heading">Target Critical Skill Gaps and Build Foundational Math Skills with Individualized Intervention Solution</span>
+        <span class="caption hidden-xs hidden-sm">Presented by Valerie Russell, Professional Services Specialist</span>
+      </a>
+    </li>
+  </ul>
+
+
+</body>
+</html>
