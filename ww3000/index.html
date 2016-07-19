@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Wordy Wise 3000</title>
+  <meta name="description" content="test">
+
+  <link href="https://eps.schoolspecialty.com/CMSPages/GetResource.ashx?stylesheetname=MainStyle" type="text/css" rel="stylesheet"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <!-- Typkit BEGIN -->
+  <script src="//use.typekit.net/dps1ari.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <!-- Typekit END -->
+
+<style>
+/*------------------------ 
+  Typography
+--------------------------*/
+section h2 {
+    font-size: 37px;
+    font-weight: 500;
+    color: #333;
+}
+section h3 {
+    font-size: 27px;
+    font-weight: 200;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.25;
+}
+
+/*------------------------ 
+  Section: Header -- STRUCTURE
+--------------------------*/
+section.hero{
+  background: #d9ecc0; 
+  background: -moz-linear-gradient(top, #ffffff 0%, #efefef 65%); 
+  background: -webkit-linear-gradient(top, #ffffff 0%,#efefef 65%); 
+  background: linear-gradient(to bottom, #ffffff 0%,#efefef 65%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 );
+    position: relative;
+    overflow-x: hidden;
+    padding-top:30px;
+    padding-bottom: 95px; /* make room for section-nav */
+}
+.hero h1{
+    font-size: 93px;
+    
+}
+.hero h2 {
+    font-size: 33px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/*------------------------ 
+  Section: Header -- STYLING
+--------------------------*/
+.hero.spire h1{
+  color: #854392;
+}
+
+
+/*------------------------ 
+  Section: Header -- STYLING
+--------------------------*/
+.hero.ww3k h1{
+  color: #333333;
+  color: rgba(1,1,1,.9);
+}
+
+/*------------------------ 
+  Color Scheme overrides
+--------------------------*/
+.program-thumb li.color-scheme-wwprint a{
+  border-color:#fe4e22;
+  background-color: #ffe3db;
+}
+.program-thumb li.color-scheme-wwonline a{
+  border-color:#188abf;
+  background-color: #d8ebf4;
+}
+
+
+
+ul.accolades,
+ul.program-thumb{
+  list-style: none;
+  padding-left: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+/*------------------------ 
+  Program component: thumbnails
+--------------------------*/
+.program-thumb li{
+    position: relative;
+    margin: 10px 0;
+    text-align: center;
+    width: 180px;
+    -webkit-transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+}
+.program-thumb li:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 50%;
+    left: 10%;
+    bottom: 0px;
+    z-index: 0;
+    box-shadow: 0 2px 25px rgba(0,0,0,.7);
+    transition: all 0.2s ease;
+}
+.program-thumb li:hover:after {
+    box-shadow: 0 10px 40px rgba(0,0,0,.4);
+    width: 82%;
+    left: 9%;
+}
+.program-thumb li a {
+    display: block;
+    border: 3px solid #006699;
+    border-bottom-width: 7px;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    color: #333;
+    z-index: 10;
+    position: relative;
+    -webkit-transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
+}
+.program-thumb li:hover a{
+  -ms-transform: scale(1.05,1.05); /* IE 9 */
+    -webkit-transform: scale(1.05,1.05); /* Chrome, Safari, Opera */
+    transform: scale(1.05,1.05);
+}
+.program-thumb li a:hover{
+  text-decoration: none;
+  cursor: pointer;
+}
+.program-thumb .heading {
+    height: 45px;
+    line-height: 45px;
+    display: block;
+    margin-bottom: 5px;
+}
+.program-thumb .product {
+    display: block;
+    margin: 0 auto;
+    height: 90px;
+    padding: 5px 0;
+    margin-bottom: 5px;
+}
+.program-thumb .heading img,
+.program-thumb .product img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.program-thumb .caption{
+  display: block;
+}
+
+
+/*------------------------ 
+  Program component: accolades
+--------------------------*/
+.accolades li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1px
+}
+.accolades li a {
+    display: block;
+    line-height: 1.8em;
+}
+.accolades li.grades {
+    margin-right: 15px;
+}
+.accolades .grades span {
+    text-transform: uppercase;
+    display: block;
+    font-size: 11px;
+    line-height: 8px;
+    margin-top: 5px;
+}
+.icon-accolade{
+  background: #fff;
+  background: rgba(255,255,255,.65);
+  border-radius:2px;
+  padding: 3px 5px;
+  height: 35px;
+}
+.icon-accolade .text-reveal{
+  overflow: hidden;
+  position: relative;
+  transition: padding .2s ease;
+}
+.icon-accolade .text-reveal:before,
+.icon-accolade .text-reveal:after{
+  color: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 999999%;
+    height: 100%;
+    opacity:0;
+    font-size: 15px;
+    text-align: left;
+    transition: opacity .2s ease;
+}
+.icon-accolade:hover .text-reveal:before,
+.icon-accolade:hover .text-reveal:after{
+  opacity: 1;
+}
+.icon-accolade .rti{
+  padding: 3px 15px;
+}
+.icon-accolade .rti:before{
+    content: "RTI";
+    line-height: 35px;
+    padding-left: 10px;
+}
+.icon-accolade:hover .rti {
+    padding-left: 40px;
+}
+
+.icon-accolade .cc:before{
+    content: "Common Core";
+    line-height: 23px;
+    padding-left: 30px;
+}
+.icon-accolade .cc:after {
+    content: "Aligned";
+    line-height: 46px;
+    font-size: 10px;
+    padding-left: 30px;
+}
+.icon-accolade:hover .cc{
+  padding-right: 110px;
+}
+
+.icon-accolade .og:before{
+  content:"Orton-Gillingham";
+  line-height: 23px;
+    padding-left: 30px;
+}
+.icon-accolade .og:after{
+  content: "Based";
+    line-height: 46px;
+    font-size: 10px;
+    padding-left: 30px;
+}
+.icon-accolade:hover .og{
+  padding-right: 120px;
+}
+
+/*------------------------ 
+  Icons
+--------------------------*/
+.rti-triangle {
+    width: 30px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+    color: #fff;
+    margin-left: -8px;
+    margin-right: -4px;
+}
+.rti-triangle:first-child {
+    left: 0;
+}
+.rti-triangle:last-child {
+    margin-right: -7px;
+}
+.rti-triangle:before {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 27px solid #000;
+    display: inline-block;
+    font-weight: 900;
+    position: relative;
+    content: "";
+}
+.rti1.rti-triangle:before{
+  border-bottom-color: #74489d;
+}
+.rti2.rti-triangle:before{
+  border-bottom-color: #43b660;
+}
+.rti3.rti-triangle:before{
+  border-bottom-color: #eb7424;
+}
+.rti-triangle:after {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    text-align: center;
+}
+.rti1:after {
+    content: "1";
+}
+.rti2:after {
+    content: "2";
+}
+.rti3:after {
+    content: "3";
+}
+.ww-watermark{
+  transform: translate(-50%, 0);
+  min-width: 200%;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  left: 50%;
+  top: 0;
+}
+.ww-watermark .backslash,
+.ww-watermark .forwardslash{  
+  background: rgba(216,235,244,.5);
+  display: inline-block;
+  width: 24em;
+  height: 63.3em;
+}
+.ww-watermark .backslash{
+  -webkit-transform: skew(21deg);
+     -moz-transform: skew(21deg);
+       -o-transform: skew(21deg);
+}
+.ww-watermark .forwardslash{
+  -webkit-transform: skew(-21deg);
+     -moz-transform: skew(-21deg);
+       -o-transform: skew(-21deg);
+}
+.wordscatter{
+  height: 200px;
+  z-index: 100;
+  position: relative;
+}
+.wordscatter > div{
+  position: absolute;
+  font-size: 20px;
+  color: rgba(0,0,0,.2);
+}
+.wordscatter > div.go {
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+}
+.wordscatter > div.go:hover{
+   animation:0;
+}
+
+
+
+.popover-content {
+  font-size: 15px;
+}
+.popover-content img {
+    display: block;
+    margin: 10px auto;
+}
+.popover-content h4 {
+    text-align: center;
+    font-size: 18px;
+    margin: 6px 0;
+}
+.popover-content em {
+    display: block;
+    margin-top: 5px;
+}
+
+.popover-content span {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+@keyframes pulse {
+  0% {
+    /*transform: scale3d(1, 1, 1);*/
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    /*transform: scale3d(1.05, 1.05, 1.05);*/
+    opacity: 0;
+  }
+  70%{
+    opacity: 0;
+  }
+  80% {
+    /*transform: scale3d(1, 1, 1);*/
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+}
+</style>
+
+</head>
+<body>
+
+<section class="hero ww3k text-center">
+  
+  <div class="wordscatter">
+  </div>
+<script>
+var wordbank = [
+  {word:"Benefit", level:4, def:"v. To help or be helpful to; to be useful to. <em>That preschool program benefits young children.</em>"},
+  {word:"Complete", level:4, def:"adj. Having no missing parts; whole. <em>She bought a complete set of woodworking tools at a yard sale.</em>"},
+  {word:"Accustom", level:5, def:"v. To make familiar. <em>Every fall the students accustom themselves to the new schedule.</em>"},
+  {word:"Budge", level:5, def:"v. To move or shift. <em>The old metal trunk was so heavy we could not budge it.</em>"},
+  {word:"Retire", level:5, def:"v. To stop working because one has reached a certain age. <em>The jewelry company usually gives its workers a small gift when they retire.</em>"},
+  {word:"Affection", level:6, def:"n. A fond or tender feeling. <em>Hugging is one way to show affection.</em>"},
+  {word:"Exhibit", level:6, def:"v. To show in public. <em>Local artists exhibited their paintings at the library.</em>"},
+  {word:"Abandon", level:4, def:"v. To give up by leaving in time of danger. <em>The captain gave the order to abandon the ship when it began to sink.</em>"},
+  {word:"Rejoice", level:4, def:"v. To be very happy. <em>Family members rejoiced when they heard that members of the Mount Everest expedition had returned safely.</em>"},
+  {word:"Victor", level:4, def:"n. The winner in a contest or struggle. <em>The victors of the semifinal competition will meet in the finals tomorrow.</em>"},
+  {word:"Vanish", level:4, def:"adj. Having no missing parts; whole. <em>She bought a complete set of woodworking tools at a yard sale.</em>"},
+  {word:"Pervade", level:5, def:"v. To make familiar. <em>Every fall the students accustom themselves to the new schedule.</em>"},
+  {word:"Declar", level:5, def:"v. To move or shift. <em>The old metal trunk was so heavy we could not budge it.</em>"},
+  {word:"Hatch", level:5, def:"v. To stop working because one has reached a certain age. <em>The jewelry company usually gives its workers a small gift when they retire.</em>"},
+  {word:"Apocryphal", level:6, def:"n. A fond or tender feeling. <em>Hugging is one way to show affection.</em>"},
+  {word:"Abate", level:6, def:"v. To show in public. <em>Local artists exhibited their paintings at the library.</em>"},
+  {word:"Evoke", level:4, def:"v. To give up by leaving in time of danger. <em>The captain gave the order to abandon the ship when it began to sink.</em>"},
+  {word:"Impartial", level:4, def:"v. To be very happy. <em>Family members rejoiced when they heard that members of the Mount Everest expedition had returned safely.</em>"},
+  {word:"Plumb", level:4, def:"n. The winner in a contest or struggle. <em>The victors of the semifinal competition will meet in the finals tomorrow.</em>"},
+  {word:"Arrange", level:4, def:"adj. Having no missing parts; whole. <em>She bought a complete set of woodworking tools at a yard sale.</em>"},
+  {word:"Fiber", level:5, def:"v. To make familiar. <em>Every fall the students accustom themselves to the new schedule.</em>"},
+  {word:"Bewail", level:5, def:"v. To move or shift. <em>The old metal trunk was so heavy we could not budge it.</em>"},
+  {word:"Extol", level:5, def:"v. To stop working because one has reached a certain age. <em>The jewelry company usually gives its workers a small gift when they retire.</em>"},
+  {word:"Flamboyant", level:6, def:"n. A fond or tender feeling. <em>Hugging is one way to show affection.</em>"},
+  {word:"Wheedle", level:6, def:"v. To show in public. <em>Local artists exhibited their paintings at the library.</em>"},
+  {word:"Accentuate", level:4, def:"v. To give up by leaving in time of danger. <em>The captain gave the order to abandon the ship when it began to sink.</em>"},
+  {word:"Convoluted", level:4, def:"v. To be very happy. <em>Family members rejoiced when they heard that members of the Mount Everest expedition had returned safely.</em>"},
+  {word:"Masochistic", level:4, def:"n. The winner in a contest or struggle. <em>The victors of the semifinal competition will meet in the finals tomorrow.</em>"},
+  {word:"Accoutrements", level:4, def:"adj. Having no missing parts; whole. <em>She bought a complete set of woodworking tools at a yard sale.</em>"},
+  {word:"Choleric", level:5, def:"v. To make familiar. <em>Every fall the students accustom themselves to the new schedule.</em>"},
+  {word:"Modicum", level:5, def:"v. To move or shift. <em>The old metal trunk was so heavy we could not budge it.</em>"},
+  {word:"Barrier", level:5, def:"v. To stop working because one has reached a certain age. <em>The jewelry company usually gives its workers a small gift when they retire.</em>"},
+  {word:"Ensure", level:6, def:"n. A fond or tender feeling. <em>Hugging is one way to show affection.</em>"},
+  {word:"Fortress", level:6, def:"v. To show in public. <em>Local artists exhibited their paintings at the library.</em>"},
+  {word:"Petty", level:4, def:"v. To give up by leaving in time of danger. <em>The captain gave the order to abandon the ship when it began to sink.</em>"},
+  {word:"Threat", level:4, def:"v. To be very happy. <em>Family members rejoiced when they heard that members of the Mount Everest expedition had returned safely.</em>"},
+  {word:"Vast", level:4, def:"n. The winner in a contest or struggle. <em>The victors of the semifinal competition will meet in the finals tomorrow.</em>"},
+  {word:"Allege", level:4, def:"adj. Having no missing parts; whole. <em>She bought a complete set of woodworking tools at a yard sale.</em>"},
+  {word:"Pander", level:5, def:"v. To make familiar. <em>Every fall the students accustom themselves to the new schedule.</em>"},
+  {word:"Lurk", level:5, def:"v. To move or shift. <em>The old metal trunk was so heavy we could not budge it.</em>"},
+  {word:"Naive", level:5, def:"v. To stop working because one has reached a certain age. <em>The jewelry company usually gives its workers a small gift when they retire.</em>"},
+  {word:"Legendary", level:6, def:"n. A fond or tender feeling. <em>Hugging is one way to show affection.</em>"},
+  {word:"Acrid", level:6, def:"v. To show in public. <em>Local artists exhibited their paintings at the library.</em>"},
+  {word:"Irate", level:4, def:"v. To give up by leaving in time of danger. <em>The captain gave the order to abandon the ship when it began to sink.</em>"},
+  {word:"Smolder", level:4, def:"v. To be very happy. <em>Family members rejoiced when they heard that members of the Mount Everest expedition had returned safely.</em>"},
+  {word:"Headlong", level:4, def:"n. The winner in a contest or struggle. <em>The victors of the semifinal competition will meet in the finals tomorrow.</em>"}
+];
+
+$(function(){
+  var grid = {w:130,h:60}; // side of grid for creating plots
+  var evens = true; // even/odds flag for skipping every other grid slot
+  var cols = 20; // number of columns we want to create plots for
+  var rows = 4; // number of rows we want to create plots for
+  var positions = []; // empty array of plots
+
+  // generate plots
+  for (i = 1; i <= rows; i++) {
+    for (j = 1; j <= cols; j++) {
+      if ( (evens && isEven(j)) || (!evens && !isEven(j)) ){
+        var x,y;
+        x = grid.w * (j-1);
+        y = (grid.h * i) - grid.h;
+        xRandom = randomIntBetween(x, (x+(grid.w/2)));
+        yRandom = randomIntBetween(y, (y+(grid.h/2)));
+
+        positions.push({x:xRandom,y:yRandom});
+      }
+    }    
+    evens = !evens;
+  }
+
+  // randomize the plots
+  positions = shuffle(positions);
+
+  // position words based on plots
+  $('.wordscatter > div').each(function(i){
+    $(this).css({left:positions[i].x, top:positions[i].y});
+  });
+
+  // slowly add animation class ".go"
+  var index = 0;
+  var wordcontainer = $('.wordscatter');
+  var addGoInterval = setInterval(function(){
+    
+    if (index < positions.length) {
+      var d = document.createElement('div');
+      $(d).addClass('go pop')
+      .attr('data-content', '<h4 class="lead">Book/Level '+wordbank[index].level+'</h4><img src="http://placehold.it/116x85"><span>'+wordbank[index].word+"</span>"+wordbank[index].def)
+      .css({left:positions[index].x, top:positions[index].y})
+      .html(wordbank[index].word)
+      .appendTo(wordcontainer);
+
+    } else {
+      console.log('no more elements left. we are done.');
+      clearInterval(addGoInterval);
+    }
+    triggerPopovers();
+    index++;
+  },200);
+  
+});
+function triggerPopovers() {
+  $('.pop').popover({
+    container:"body",
+    placement:"bottom",
+    trigger:"hover",
+    html: true
+  });
+}
+function randomIntBetween(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+function isEven(n) {
+   return n % 2 == 0;
+}
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+</script>
+  <div class="ww-watermark">
+    <span class="backslash"></span>
+    <span class="forwardslash"></span>
+    <span class="backslash"></span>
+    <span class="forwardslash"></span>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2 pad-bottom">
+        
+        <h1>Wordly Wise 3000</h1>
+        <h2>Direct Academic Vocabulary Instruction</h2>
+        <ul class="program-thumb list-inline">
+          <li class="color-scheme-wwprint">
+            <a href="#">
+              <span class="product"><img src="http://eps.schoolspecialty.com/EPS/media/Site-Resources/Product%20Families/Vocabulary/ww3000_product_hero02.png"></span>
+              <span class="caption">Print</span>
+            </a>
+          </li>
+          <li class="color-scheme-wwonline">
+            <a href="#">
+              
+              <span class="product"><img src="http://eps.schoolspecialty.com/EPS/media/Site-Resources/Product%20Families/Wordly%20Wise%203000%20Online/ww3k_online_large.png"></span>
+              <span class="caption">Digital</span>
+            </a>
+          </li> 
+        </ul>
+        <p class="lead" style="margin-bottom: 0;">Choose between two options for flexible implementation!</p>
+      </div>
+
+      <div class="col-sm-6 col-sm-offset-3 pad-top pad-bottom">
+        <h3><strong>Wordly Wise 3000</strong> provides systematic academic vocabulary instruction – developing the critical link between vocabulary and reading comprehension.</h3>
+        <ul class="accolades">
+          <li class="grades"><span>Grades</span> K &ndash; 12</li>
+          <li class="icon-accolade"><a href="/commoncore" class="cc text-reveal"><img src="http://ispire.com/img/cc_badge.png" width="25"></a></li>
+          <li class="icon-accolade"><a href="/rti" class="rti text-reveal"><span class="rti-triangle rti1"></span><span class="rti-triangle rti2"></span></span></a></li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
