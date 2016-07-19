@@ -77,6 +77,10 @@ section.hero{
   color: #333333;
   color: rgba(1,1,1,.9);
 }
+.hero.ww3k h2{
+  color:#777879;
+  color: rgba(103,103,103,.9);
+}
 
 /*------------------------ 
   Color Scheme overrides
@@ -349,10 +353,12 @@ ul.program-thumb{
   height: 200px;
   z-index: 100;
   position: relative;
+  margin-bottom: 30px;
 }
 .wordscatter > div{
   position: absolute;
   font-size: 20px;
+  font-weight: 200;
   color: rgba(0,0,0,.2);
 }
 .wordscatter > div.go {
@@ -366,6 +372,15 @@ ul.program-thumb{
 }
 
 
+.popover{
+  border: none;
+  box-shadow: 0 4px 33px rgba(0,0,0,.15);
+  max-width: 240px;
+  padding: 5px 4px 18px;
+}
+.popover.bottom > .arrow {
+    border-color: transparent;
+}
 
 .popover-content {
   font-size: 15px;
@@ -516,7 +531,7 @@ $(function(){
     if (index < positions.length) {
       var d = document.createElement('div');
       $(d).addClass('go pop')
-      .attr('data-content', '<h4 class="lead">Book/Level '+wordbank[index].level+'</h4><img src="http://placehold.it/116x85"><span>'+wordbank[index].word+"</span>"+wordbank[index].def)
+      .attr('data-content', '<h4 class="lead">Book/Level '+wordbank[index].level+'</h4><img src="book.png"><span>'+wordbank[index].word+"</span>"+wordbank[index].def)
       .css({left:positions[index].x, top:positions[index].y})
       .html(wordbank[index].word)
       .appendTo(wordcontainer);
