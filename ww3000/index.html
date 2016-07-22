@@ -326,6 +326,7 @@ ul.program-thumb{
 .ww-watermark{
   transform: translate(-50%, 0);
   min-width: 200%;
+  height: 100%;
   position: absolute;
   overflow: hidden;
   white-space: nowrap;
@@ -355,20 +356,35 @@ ul.program-thumb{
   position: relative;
   margin-bottom: 30px;
 }
+.wordscatter.begin {
+  animation-duration: 130s;
+  animation-iteration-count: infinite;
+  animation-name: slide;
+  animation-timing-function: linear;
+}
+.wordscatter.begin.pause{
+  animation-play-state: paused;
+}
 .wordscatter > div{
   position: absolute;
-  font-size: 20px;
-  font-weight: 200;
+  font-size: 23px;
+  font-weight: normal;
   color: rgba(0,0,0,.2);
+  display: none;
+  cursor: default;
+  transition: transform .2s ease;
 }
-.wordscatter > div.go {
+.wordscatter > div.animated {
+  display: block;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-name: pulse;
   animation-timing-function: ease-in-out;
 }
-.wordscatter > div.go:hover{
+.wordscatter > div.animated:hover{
    animation:0;
+   color: rgba(0,0,0,.8);
+   transform: scale(1.1, 1.1);
 }
 
 
@@ -409,29 +425,138 @@ ul.program-thumb{
 @keyframes pulse {
   0% {
     /*transform: scale3d(1, 1, 1);*/
-    opacity: 1;
+    opacity: 0;
   }
   20% {
-    opacity: 1;
+    opacity: 0;
   }
   30% {
     /*transform: scale3d(1.05, 1.05, 1.05);*/
-    opacity: 0;
+    opacity: 1;
   }
   70%{
-    opacity: 0;
+    opacity: 1;
   }
   80% {
     /*transform: scale3d(1, 1, 1);*/
-    opacity: 1;
+    opacity: 0;
   }
   100%{
-    opacity: 1;
+    opacity: 0;
   }
 }
 
-.pulse {
-  animation-name: pulse;
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  animation-duration: .75s;
+}
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+.flipInX {
+  backface-visibility: visible !important;
+  animation-name: flipInX;
+}
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  animation-name: bounceIn;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
 }
 </style>
 
@@ -493,9 +618,28 @@ var wordbank = [
 ];
 
 $(function(){
+
+  // extend bootstrap popover for custom show
+  // (function () {
+  //     var orig = $.fn.popover,
+  //         proto = $.extend({}, $.fn.popover.Constructor.prototype);
+
+  //     $.fn.popover = function (options) {
+  //         return this.each(function () {
+  //             orig.call($(this), options);
+  //             if (typeof options.show == 'function') {
+  //                 $(this).data('bs.popover').show = function () {
+  //                     options.show.call(this.$tip, this);
+  //                     proto.show.call(this);
+  //                 };
+  //             }
+  //         });
+  //     }
+  // })();
+
   var grid = {w:130,h:60}; // side of grid for creating plots
   var evens = true; // even/odds flag for skipping every other grid slot
-  var cols = 20; // number of columns we want to create plots for
+  var cols = 15*3; // number of columns we want to create plots for
   var rows = 4; // number of rows we want to create plots for
   var positions = []; // empty array of plots
 
@@ -519,37 +663,65 @@ $(function(){
   positions = shuffle(positions);
 
   // position words based on plots
-  $('.wordscatter > div').each(function(i){
-    $(this).css({left:positions[i].x, top:positions[i].y});
-  });
+  // $('.wordscatter > div').each(function(i){
+  //   $(this).css({left:positions[i].x, top:positions[i].y});
+  // });
 
-  // slowly add animation class ".go"
-  var index = 0;
+
+  // create words
+  var wordbankIndex = 0;
   var wordcontainer = $('.wordscatter');
-  var addGoInterval = setInterval(function(){
-    
-    if (index < positions.length) {
-      var d = document.createElement('div');
-      $(d).addClass('go pop')
-      .attr('data-content', '<h4 class="lead">Book/Level '+wordbank[index].level+'</h4><img src="book.png"><span>'+wordbank[index].word+"</span>"+wordbank[index].def)
-      .css({left:positions[index].x, top:positions[index].y})
-      .html(wordbank[index].word)
-      .appendTo(wordcontainer);
+  for (i = 0; i < positions.length; i++) {
 
-    } else {
-      console.log('no more elements left. we are done.');
-      clearInterval(addGoInterval);
+    // start from beginning of wordbank if we reached the end
+    if (wordbankIndex == wordbank.length) {
+      wordbankIndex = 0;
     }
-    triggerPopovers();
-    index++;
-  },200);
+
+    var d = document.createElement('div');
+    $(d).addClass('word word-popover')
+    .attr('data-content', '<h4 class="lead">Book/Level '+wordbank[wordbankIndex].level+'</h4><img src="book.png"><span>'+wordbank[wordbankIndex].word+"</span>"+wordbank[wordbankIndex].def)
+    .css({left:positions[i].x, top:positions[i].y})
+    .html(wordbank[wordbankIndex].word)
+    .appendTo(wordcontainer);
+
+    wordbankIndex++;
+  }
+  // add popovers
+  triggerPopovers();
+
+  // start horizontal animation
+  wordcontainer.addClass('begin');
+
+  // slowly add animation class
+  var addAnimatedInterval = setInterval(function(){
+    console.log('adding animated');
+    var e = $('.word').not('.animated').first();
+
+    if (e.length) {
+      e.addClass('animated')
+    } else {
+      console.log('no more elements left to animate. we are done.');      
+      clearInterval(addAnimatedInterval);
+    }
+  },75);
+
+  // pause animation on hovers
+  $('.wordscatter > div').hover(function(){
+    $(this).parent('.wordscatter').addClass('pause');
+  }, function(){
+    $(this).parent('.wordscatter').removeClass('pause');
+  });
   
 });
 function triggerPopovers() {
-  $('.pop').popover({
+  $('.word-popover').popover({
     container:"body",
     placement:"bottom",
     trigger:"hover",
+    // show: function () {
+    //     $(this).addClass('animated fadeInUp');
+    // },
     html: true
   });
 }
