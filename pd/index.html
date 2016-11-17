@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EPS</title>
+  <meta name="description" content="test">
+
+  <link href="https://eps.schoolspecialty.com/CMSPages/GetResource.ashx?stylesheetname=MainStyle" type="text/css" rel="stylesheet"/>
+
+  <!-- Typkit BEGIN -->
+  <script src="//use.typekit.net/dps1ari.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <!-- Typekit END -->
+
+<style>
+.circle-steps{
+  counter-reset: the-counter;
+  padding: 0;
+  position: relative;
+  background: inherit;
+}
+.circle-steps > li{
+  list-style: none;
+  position: relative;
+  padding: 0 0 30px 65px;
+  background: inherit;
+}
+.circle-steps > li:before{
+  content: counter(the-counter);
+  counter-increment: the-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #006699;
+  border-radius: 50%;
+  color: #006699;
+  background: inherit;
+  font-weight: 900;
+  font-size: 2em;
+  text-align: center;
+  line-height: 1.4em;
+  z-index: 5;
+}
+.circle-steps > li:after {
+  content: "";
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  left: 24px;
+  top: 10px;
+  background: rgba(107,162,190, .3);
+  z-index: 2;
+}
+.circle-steps > li:last-child:after {
+  display: none;   
+}
+
+.circle-steps h3{
+  color:#006699;
+  margin: 0;
+}
+.circle-steps p {
+  margin: 0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-5">
+
+      <div class="well">
+
+        <h2 class="lead">Three Simple Steps</h2>
+        <ol class="circle-steps">
+          <li>
+            <h3>Discover</h3>
+            <p>First, we determine requirements for implementation, scheduling, and fidelity.</p>
+          </li>
+          <li>
+            <h3>Plan</h3>
+            <p>Next, we create a customized plan that integrates comprehensive teacher training with proven instructional strategies, classroom coaching, and ongoing support.</p>
+          </li>
+          <li>
+            <h3>Implement</h3>
+            <p>Finally, we schedule and execute the training sessions at your convenience.</p>
+          </li>
+        </ol>
+
+      </div>  
+
+    </div>
+  </div>
+
+
+</body>
+</html>
